@@ -15,8 +15,6 @@ pipeline {
             }
         }
 
-        # write a stage to change the directory to 'infrastructure' and run cloudformation deploy command
-
         stage('Create CFN Template S3 Bucket') {
             steps {
                 dir('infrastructure') {
