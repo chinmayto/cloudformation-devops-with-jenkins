@@ -88,7 +88,7 @@ pipeline {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-jenkinsadmin']]){
                             dir('infrastructure/development/') {
                                 sh 'echo "=================Development Deployment Rollback=================="'
-                                sh "aws cloudformation delete-stack --stack-name DeployDevelopmentStack --region 'us-east-1' --capabilities CAPABILITY_IAM"
+                                sh "aws cloudformation delete-stack --stack-name DeployDevelopmentStack --region 'us-east-1'"
                                 sh "aws cloudformation wait stack-delete-complete --stack-name DeployDevelopmentStack --region 'us-east-1'"
                             }
                         }
@@ -104,7 +104,7 @@ pipeline {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-jenkinsadmin']]){
                             dir('infrastructure/staging/') {
                                 sh 'echo "=================Staging Deployment Rollback=================="'
-                                sh "aws cloudformation delete-stack --stack-name DeployStagingStack --region 'us-east-1' --capabilities CAPABILITY_IAM"
+                                sh "aws cloudformation delete-stack --stack-name DeployStagingStack --region 'us-east-1'"
                                 sh "aws cloudformation wait stack-delete-complete --stack-name DeployStagingStack --region 'us-east-1'"
                             }
                         }
@@ -120,7 +120,7 @@ pipeline {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-jenkinsadmin']]){
                             dir('infrastructure/production/') {
                                 sh 'echo "=================Production Deployment Rollback=================="'
-                                sh "aws cloudformation delete-stack --stack-name DeployProductionStack --region 'us-east-1' --capabilities CAPABILITY_IAM"
+                                sh "aws cloudformation delete-stack --stack-name DeployProductionStack --region 'us-east-1'"
                                 sh "aws cloudformation wait stack-delete-complete --stack-name DeployProductionStack --region 'us-east-1'"
                             }
                         }
