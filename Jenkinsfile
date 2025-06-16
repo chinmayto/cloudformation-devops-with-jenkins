@@ -15,11 +15,14 @@ pipeline {
             }
         }
 
+        # write a stage to change the directory to 'infrastructure' and run cloudformation deploy command
+
         stage('Create CFN Template S3 Bucket') {
             steps {
-                dir('infrastructure')
-                sh "aws cloudformation deploy --stack-name cfn-s3bucket --template-file create-cfn-template-bucket.yaml --region 'us-east-1' -capabilities CAPABILITY_IAM"
-                sh "aws s3 cp . s3://ct-cfn-files-for-stack/ --recursive"
+                dir('infrastructure') {
+                    sh "aws cloudformation deploy --stack-name cfn-s3bucket --template-file create-cfn-template-bucket.yaml --region 'us-east-1' -capabilities CAPABILITY_IAM"
+                    sh "aws s3 cp . s3://ct-cfn-files-for-stack/ --recursive"
+                }
             }
         }
     }
