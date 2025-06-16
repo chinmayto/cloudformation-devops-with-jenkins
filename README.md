@@ -1,2 +1,2 @@
-# cloudformation-gitops-with-jenkins
-cloudformation-gitops-with-jenkins
+# cloudformation-devops-with-jenkins
+cloudformation-devops-with-jenkins
