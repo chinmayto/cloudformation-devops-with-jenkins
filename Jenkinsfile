@@ -43,7 +43,7 @@ pipeline {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-jenkinsadmin']]){
                             dir('infrastructure/development/') {
                                 sh 'echo "=================Development Deployment=================="'
-                                sh "aws cloudformation deploy --stack-name DeployDevelopmentStack --template-file root.yaml --region 'us-east-1' --capabilities CAPABILITY_IAM"
+                                sh "aws cloudformation deploy --stack-name DeployDevelopmentStack --template-file root.yaml --region 'us-east-1' --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM"
                             }
                         }
                     }
@@ -58,7 +58,7 @@ pipeline {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-jenkinsadmin']]){
                             dir('infrastructure/staging/') {
                                 sh 'echo "=================Staging Deployment=================="'
-                                sh "aws cloudformation deploy --stack-name DeployStagingStack --template-file root.yaml --region 'us-east-1' --capabilities CAPABILITY_IAM"
+                                sh "aws cloudformation deploy --stack-name DeployStagingStack --template-file root.yaml --region 'us-east-1' --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM"
                             }
                         }
                     }
@@ -73,7 +73,7 @@ pipeline {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-jenkinsadmin']]){
                             dir('infrastructure/production/') {
                                 sh 'echo "=================Production Deployment=================="'
-                                sh "aws cloudformation deploy --stack-name DeployProductionStack --template-file root.yaml --region 'us-east-1' --capabilities CAPABILITY_IAM"
+                                sh "aws cloudformation deploy --stack-name DeployProductionStack --template-file root.yaml --region 'us-east-1' --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM"
                             }
                         }
                     }
