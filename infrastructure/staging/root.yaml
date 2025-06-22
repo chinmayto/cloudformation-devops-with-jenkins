@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'S3 bucket with a dynamically created name and apply a policy for access from EC2 instances'
+Description: 'Main Stack for the specified environment'
 
 Parameters:
   TemplateUrlBase: 
